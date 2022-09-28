@@ -12,6 +12,7 @@ window.addEventListener("keydown", (e) => {
   }
 
   if (e.key == "ArrowUp" || e.keyCode == 32) {
+    //TOMBOL MENEMBAK
 
     var bullet = document.createElement("div");
     bullet.classList.add("bullets");
@@ -31,7 +32,7 @@ window.addEventListener("keydown", (e) => {
             bulletbound.left >= rockbound.left &&
             bulletbound.right <= rockbound.right &&
             bulletbound.top <= rockbound.top &&
-            bulletbound.bottom <= rockbound.bottom
+            bulletbound.bottom <= rockbound.bottom //kiri kanan
           ) {
             rock.parentElement.removeChild(rock); 
 
@@ -48,6 +49,7 @@ window.addEventListener("keydown", (e) => {
       if (bulletbottom >= 500) {
         clearInterval(movebullet);
       }
+      //membatasi bullet di frame
 
       bullet.style.left = left + "px"; 
       bullet.style.bottom = bulletbottom + 3 + "px";
@@ -55,18 +57,18 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-var generaterocks = setInterval(() => {
+var generaterocks = setInterval(() => {// MULAI GAME
   var rock = document.createElement("div");
   rock.classList.add("rocks");
 
   var rockleft = parseInt(
     window.getComputedStyle(rock).getPropertyValue("left")
-  );
+  );   
 
   rock.style.left = Math.floor(Math.random() * 450) + "px";
 
   board.appendChild(rock);
-}, 1000);
+}, 1500 );//MEMPERBANYAK/MENGURANGI OBSTCLE 
 
 var moverocks = setInterval(() => {
   var rocks = document.getElementsByClassName("rocks");
@@ -77,15 +79,15 @@ var moverocks = setInterval(() => {
       var rock = rocks[i];
       var rocktop = parseInt(
         window.getComputedStyle(rock).getPropertyValue("top")
-      );
+      );// OBSTACLE KEBAWAH
 
       if (rocktop >= 475) {
-        alert("Game Over");
+        alert("Game Over");// TEXT GAME OVER
         clearInterval(moverocks);
         window.location.reload();
       }
 
-      rock.style.top = rocktop + 25 + "px";
+      rock.style.top = rocktop + 10 + "px"; //MEMPERLAMBAT/MEMPERCEPAT OBSTCLE
     }
   }
 }, 450);
