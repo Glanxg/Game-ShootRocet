@@ -1,6 +1,8 @@
 var jet = document.getElementById("jet");
 var board = document.getElementById("board");
 
+// test dari farish
+
 window.addEventListener("keydown", (e) => {
   var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
   if (e.key == "ArrowLeft" && left > 0) {
